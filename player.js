@@ -30,11 +30,15 @@ function checkVariable() {
 checkVariable();
 
 
+
 var link = document.createElement('link');
 link.rel = 'stylesheet';
 link.type = 'text/css';
 link.href = 'https://guidedlearning.oracle.com/player/latest/static/css/stTip.css';
 document.head.appendChild(link);
+
+var t;
+var l;
 
 
 function makeElement(content, l, t) {
@@ -44,6 +48,7 @@ function makeElement(content, l, t) {
     top.style.position = "fixed";
     top.style.top = t;
     top.style.left = l;
+    top.style['z-index'] = 100000;
     var htmlString = '<div class="tooltip in">';
     htmlString += '<div class="tooltip-arrow"></div>';
     htmlString += '<div class="tooltip-arrow second-arrow"></div>';
@@ -99,7 +104,11 @@ function goNext() {
     if (placement === 'bottom') t = t + height;
     if (placement === 'left') l = l - tooltipWidth;
 
-   
+    if (stepIndex == 3) {
+        // placement = 'bottom';
+        l = window.innerWidth - tooltipWidth - 17;
+    }
+
     //t = pos.top;
     //l = pos.left;
 
@@ -122,6 +131,7 @@ __5szm2kaj = function (data) {
     element = jQuery(currentStep.action.selector)[0];
     content = currentStep.action.contents['#content'];
     placement = currentStep.action.placement;
+
     $(element).css('border','1px black solid');
 
     pos = jQuery(element).offset();
@@ -143,4 +153,10 @@ __5szm2kaj = function (data) {
     if (placement === 'right') l = l + width;
     if (placement === 'bottom') t = t + height;
     if (placement === 'left') l = l - tooltipWidth;
+
+    console.log(t, l);
+    element.parentNode.appendChild(makeElement(content, l + 'px', t + 'px'));
+    if (currentStep.followers.length > 0) stepIndex = currentStep.followers[0].next;
+    else stepIndex = -1;
+
 }
