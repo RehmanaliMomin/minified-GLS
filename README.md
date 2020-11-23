@@ -5,7 +5,7 @@ A complete solution of minified guided learning solution on top of google.com
 1. Copy the script from player.js file.
 2. Go to Google.com
 3. Open the Inspect Element (Ctrl+Shift+I)
-4. Dock it to "Unlock into separate window" { Important }
+4. Dock it to "Unlock into separate window". { **Important**, click on the option highlighted in the image below }
 5. Open the Sources panel -> Click on the New Snippet -> Give any name to it and paste the copied script into the editor.
 6. Do a Run (Ctrl + Enter)
 Your Guide has now started. Click on Next to go to the next guide.
