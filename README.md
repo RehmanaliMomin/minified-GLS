@@ -14,7 +14,9 @@ Once the guide has ended, to run the guide again, please do the 5th and 6th step
 
 
 ## Note : 
-a. Please make sure that you have open the panel as a separate window (see above Step 4)
-b. For the guide step 2 (the one showing Images step), the guide will be shown in the bottom of the element instead of right as mentioned in the jsonp steps, because of space constraint. 
+1. Please make sure that you have opened the panel as a separate window (see above Step 4, and below image)
+2. For the guide step 2 (the one showing Images step), the guide will be shown in the bottom of the element instead of right as mentioned in the jsonp steps, because of space constraint. 
 
+
+<img src="dock-separate-window.png"/>
 
