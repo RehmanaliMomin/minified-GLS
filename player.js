@@ -58,6 +58,61 @@ function makeElement(content, l, t) {
 }
 
 
+
+function goNext() {
+    let height = 0;
+    let width = 0;
+    element.parentNode.removeChild(document.getElementById('tooltip' + currentStep.id));
+    $(element).css('border','');
+    //stepIndex++;
+    // if (stepIndex >= steps.length - 1) return;
+    if (parseInt(stepIndex) < 0) return;
+    currentStep = steps.find(e => e.id == stepIndex);
+    // element = document.getElementById(currentId);
+    element = jQuery(currentStep.action.selector)[jQuery(currentStep.action.selector).length - 1];
+
+    $(element).css('border','1px black solid');
+
+    content = currentStep.action.contents['#content'];
+    placement = currentStep.action.placement;
+
+    if (stepIndex == 3) {
+        placement = 'bottom';
+    }
+
+    pos = jQuery(element).offset();
+    height = jQuery(element).height();
+    width = jQuery(element).width();
+    console.log(pos);
+    console.log(currentStep.id + ' test ' + width);
+
+    let pt = parseInt(jQuery(element).css('padding-top'));
+    let pb = parseInt(jQuery(element).css('padding-bottom'));
+    let pl = parseInt(jQuery(element).css('padding-left'));
+    let pr = parseInt(jQuery(element).css('padding-right'));
+    console.log(pt, pb, pl, pr);
+    t = pos.top + pt - pb;
+    l = pos.left + pl + pr;
+
+    if (placement === 'top') t = t - tooltipHeight;
+    if (placement === 'right') l = l + width;
+    if (placement === 'bottom') t = t + height;
+    if (placement === 'left') l = l - tooltipWidth;
+
+   
+    //t = pos.top;
+    //l = pos.left;
+
+    console.log(t, l);
+
+    element.parentNode.appendChild(makeElement(content, l + 'px', t + 'px'));
+
+    if (currentStep.followers.length > 0) stepIndex = currentStep.followers[0].next;
+    else stepIndex = -1;
+
+}
+
+
 __5szm2kaj = function (data) {
     let l = 0;
     let t = 0;
